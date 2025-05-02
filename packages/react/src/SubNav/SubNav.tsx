@@ -453,9 +453,9 @@ const SubNavLinkWithSubmenu = forwardRef<HTMLDivElement, SubNavLinkProps>(
           <button
             className={styles['SubNav__sub-menu-toggle']}
             onClick={toggleExpanded}
-            aria-expanded={isExpanded ? 'true' : 'false'}
+            aria-expanded={isExpanded}
             aria-controls={submenuId}
-            aria-label={`${isExpanded ? 'Close' : 'Open'} submenu`}
+            aria-label={`${label} submenu`}
           >
             <ChevronDownIcon className={styles['SubNav__sub-menu-icon']} size={16} />
           </button>

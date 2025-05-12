@@ -453,7 +453,7 @@ const SubNavLinkWithSubmenu = forwardRef<HTMLDivElement, SubNavLinkProps>(
           <button
             className={styles['SubNav__sub-menu-toggle']}
             onClick={toggleExpanded}
-            aria-expanded={isExpanded}
+            aria-expanded={isExpanded ? 'true' : 'false'}
             aria-controls={submenuId}
             aria-label={`${label} submenu`}
           >

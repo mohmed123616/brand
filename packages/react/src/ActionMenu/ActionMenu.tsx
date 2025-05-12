@@ -354,7 +354,7 @@ const ActionMenuButton = forwardRef<HTMLButtonElement, ActionMenuButtonProps>(
       className,
       'data-testid': testId,
       disabled,
-      menuOpen = false,
+      menuOpen,
       size,
       _mode = 'default',
       onClick,
@@ -394,7 +394,7 @@ const ActionMenuButton = forwardRef<HTMLButtonElement, ActionMenuButtonProps>(
             aria-haspopup="true"
             aria-label="Menu"
             size={size}
-            aria-expanded={menuOpen}
+            aria-expanded={menuOpen ? 'true' : 'false'}
             onClick={onClick}
             disabled={disabled}
             {...props}
@@ -411,7 +411,7 @@ const ActionMenuButton = forwardRef<HTMLButtonElement, ActionMenuButtonProps>(
         className={clsx(styles.ActionMenu__button, styles[`ActionMenu__button--${size}`], className)}
         hasArrow={false}
         aria-haspopup="true"
-        aria-expanded={menuOpen}
+        aria-expanded={menuOpen ? 'true' : 'false'}
         disabled={disabled}
         data-testid={testId || testIds.button}
         size={size}
@@ -454,9 +454,9 @@ const ActionMenuItem = ({
   as,
   children,
   className,
-  disabled = false,
+  disabled,
   handler,
-  selected = false,
+  selected,
   type,
   value,
   leadingVisual: LeadingVisual,
@@ -476,8 +476,8 @@ const ActionMenuItem = ({
         className,
       )}
       role={roleTypeMap[type || 'single']}
-      aria-checked={as === 'a' || type === 'none' ? undefined : selected}
-      aria-disabled={disabled}
+      aria-checked={as === 'a' || type === 'none' ? undefined : selected ? 'true' : 'false'}
+      aria-disabled={disabled ? 'true' : 'false'}
       onClick={!isAnchor && handler && !disabled ? () => handler(String(value)) : undefined}
       onKeyDown={
         !isAnchor && handler && !disabled ? event => event.key === 'Enter' && handler(String(value)) : undefined
